@@ -14,4 +14,4 @@ func close():
 
 
 func _on_add_activity_button_pressed():
-	pass
+	main.open_menu(Main.Menues.ACTIVITIES)

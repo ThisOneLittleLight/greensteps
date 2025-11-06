@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl6o8x3m7dr3v"]
+[gd_scene load_steps=4 format=3 uid="uid://dl6o8x3m7dr3v"]
 
-[ext_resource type="PackedScene" uid="uid://cshohs0kpy2en" path="res://Scenes/Menues/start_menu.tscn" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://db8htwt1ext1q" path="res://Scripts/Runtime/Main.gd" id="1_jjgbg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjgbg"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+
+[sub_resource type="Theme" id="Theme_bo1nx"]
+Panel/styles/panel = SubResource("StyleBoxFlat_jjgbg")
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -9,6 +19,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_jjgbg")
 
-[node name="StartMenu" parent="." instance=ExtResource("1_jjgbg")]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_bo1nx")
