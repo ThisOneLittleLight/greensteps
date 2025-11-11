@@ -8,11 +8,13 @@ static var instance : Main
 enum Menues{
 	START,
 	ACTIVITIES,
+	TASK_PICKER
 }
 
 var menu_scenes : Dictionary = {
 	Menues.START : preload("res://Scenes/Menues/start_menu.tscn"),
-	Menues.ACTIVITIES : preload("res://Scenes/Menues/activity_menu.tscn")
+	Menues.ACTIVITIES : preload("res://Scenes/Menues/activity_menu.tscn"),
+	Menues.TASK_PICKER : preload("res://Scenes/Menues/task_picker_menu.tscn")
 }
 
 

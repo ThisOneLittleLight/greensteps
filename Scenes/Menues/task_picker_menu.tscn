@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba8nkw5gqtdeb"]
+
+[ext_resource type="Script" uid="uid://bq1b48am5mi8y" path="res://Scripts/Runtime/Menu/TaskPickerMenu.gd" id="1_j2u4a"]
+
+[node name="TaskPickerMenu" type="Control" node_paths=PackedStringArray("option_1_button", "option_2_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j2u4a")
+option_1_button = NodePath("HBoxContainer/Button")
+option_2_button = NodePath("HBoxContainer/Button2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 512)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 512)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
