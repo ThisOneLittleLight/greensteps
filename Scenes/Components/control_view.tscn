@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvw0scffae3a4"]
+
+[ext_resource type="Texture2D" uid="uid://ct4jsb7gx6ag8" path="res://Sprites/PanelNineSlice.png" id="1_ecjsf"]
+[ext_resource type="Script" uid="uid://c3s4ec1epigoa" path="res://Scripts/Runtime/Views/ControlView.gd" id="1_trk4u"]
+[ext_resource type="Theme" uid="uid://bvpcsvt5d56ug" path="res://UiRes/pressable_button.tres" id="3_8aqji"]
+
+[node name="ControlView" type="Control" node_paths=PackedStringArray("add_task_button", "settings_button", "quit_button")]
+custom_minimum_size = Vector2(160, 256)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1760.0
+offset_bottom = -824.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_trk4u")
+add_task_button = NodePath("NinePatchRect/VBoxContainer/Button")
+settings_button = NodePath("NinePatchRect/VBoxContainer/Button2")
+quit_button = NodePath("NinePatchRect/VBoxContainer/Button3")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ecjsf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_8aqji")
+text = "Pick Task"
+
+[node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme = ExtResource("3_8aqji")
+text = "Settings"
+
+[node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+theme = ExtResource("3_8aqji")
+text = "Quit"

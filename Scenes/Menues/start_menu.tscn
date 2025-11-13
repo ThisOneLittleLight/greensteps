@@ -1,20 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cshohs0kpy2en"]
+[gd_scene load_steps=4 format=3 uid="uid://cshohs0kpy2en"]
 
 [ext_resource type="Script" uid="uid://dkplkxxeap4ar" path="res://Scripts/Runtime/Menu/StartMenu.gd" id="1_ie1ca"]
 [ext_resource type="PackedScene" uid="uid://cgdi475j7v23c" path="res://Scenes/Components/active_task_view.tscn" id="2_8qwoi"]
+[ext_resource type="PackedScene" uid="uid://cvw0scffae3a4" path="res://Scenes/Components/control_view.tscn" id="2_jw3l7"]
 
-[node name="StartMenu" type="Control" node_paths=PackedStringArray("add_activity_button", "active_task_view")]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("active_task_view", "control_view")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -960.0
+offset_bottom = -540.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ie1ca")
-add_activity_button = NodePath("VBoxContainer/Button")
-active_task_view = NodePath("VBoxContainer/ActiveTaskView")
+active_task_view = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/ActiveTaskView")
+control_view = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/ControlView")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,18 +26,29 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "START MENU"
 horizontal_alignment = 1
 
-[node name="ActiveTaskView" parent="VBoxContainer" instance=ExtResource("2_8qwoi")]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="ControlView" parent="HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_jw3l7")]
 layout_mode = 2
-size_flags_vertical = 10
-theme_override_font_sizes/font_size = 32
-text = "Add Activity"
+size_flags_horizontal = 2
+size_flags_vertical = 4
+
+[node name="ActiveTaskView" parent="HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_8qwoi")]
+custom_minimum_size = Vector2(288, 256)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

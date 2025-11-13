@@ -11,6 +11,8 @@ enum Menues{
 	TASK_PICKER
 }
 
+@export var canvas_layer : CanvasLayer
+
 var menu_scenes : Dictionary = {
 	Menues.START : preload("res://Scenes/Menues/start_menu.tscn"),
 	Menues.ACTIVITIES : preload("res://Scenes/Menues/activity_menu.tscn"),
@@ -40,7 +42,7 @@ func open_menu(menu : Menues):
 	if menu_scenes.keys().has(menu):
 		var menu_scene : PackedScene = menu_scenes.get(menu)
 		var menu_instance : Menu = menu_scene.instantiate()
-		add_child(menu_instance)
+		canvas_layer.add_child(menu_instance)
 
 		active_menu = menu_instance
 		active_menu.open()

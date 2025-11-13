@@ -12,7 +12,7 @@ bg_color = Color(0.1, 0.1, 0.1, 0.6)
 [sub_resource type="Theme" id="Theme_bo1nx"]
 Panel/styles/panel = SubResource("StyleBoxFlat_jjgbg")
 
-[node name="Main" type="Control"]
+[node name="Main" type="Control" node_paths=PackedStringArray("canvas_layer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jjgbg")
+canvas_layer = NodePath("CanvasLayer")
 
 [node name="Panel" type="ColorRect" parent="."]
 layout_mode = 1
@@ -30,3 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_bo1nx")
 color = Color(0.13725491, 0.13725491, 0.13725491, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)

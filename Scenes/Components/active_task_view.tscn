@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgdi475j7v23c"]
+[gd_scene load_steps=5 format=3 uid="uid://cgdi475j7v23c"]
 
 [ext_resource type="Script" uid="uid://b372pqgpurki1" path="res://Scripts/Runtime/Views/ActiveTaskView.gd" id="1_yqr6c"]
+[ext_resource type="Texture2D" uid="uid://ct4jsb7gx6ag8" path="res://Sprites/PanelNineSlice.png" id="2_nw6tf"]
+[ext_resource type="LabelSettings" uid="uid://ducj34ep8g8jx" path="res://UiRes/HeadlineLabel.tres" id="3_1in1j"]
+[ext_resource type="LabelSettings" uid="uid://canad02lvntqp" path="res://UiRes/TextLabel.tres" id="4_auo46"]
 
 [node name="ActiveTaskView" type="Control" node_paths=PackedStringArray("task_name_label", "task_desc_label", "task_complete_check")]
 custom_minimum_size = Vector2(256, 256)
@@ -11,42 +14,59 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqr6c")
-task_name_label = NodePath("VBoxContainer/TaskNameLabel")
-task_desc_label = NodePath("VBoxContainer/TaskDescriptionLabel")
-task_complete_check = NodePath("VBoxContainer/CheckBox")
+task_name_label = NodePath("NinePatchRect/VBoxContainer/TaskNameLabel")
+task_desc_label = NodePath("NinePatchRect/VBoxContainer/TaskDescriptionLabel")
+task_complete_check = NodePath("NinePatchRect/VBoxContainer/CheckBox")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nw6tf")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Active Task"
+label_settings = ExtResource("3_1in1j")
+horizontal_alignment = 1
 
-[node name="TaskNameLabel" type="Label" parent="VBoxContainer"]
+[node name="TaskNameLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "TaskName"
+label_settings = ExtResource("4_auo46")
 
-[node name="TaskDescriptionLabel" type="Label" parent="VBoxContainer"]
+[node name="TaskDescriptionLabel" type="Label" parent="NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 16
 text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+label_settings = ExtResource("4_auo46")
 autowrap_mode = 2
 
-[node name="CheckBox" type="CheckBox" parent="VBoxContainer"]
+[node name="CheckBox" type="CheckBox" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 text = "Completed"
