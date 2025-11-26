@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cshohs0kpy2en"]
+[gd_scene load_steps=5 format=3 uid="uid://cshohs0kpy2en"]
 
 [ext_resource type="Script" uid="uid://dkplkxxeap4ar" path="res://Scripts/Runtime/Menu/StartMenu.gd" id="1_ie1ca"]
 [ext_resource type="PackedScene" uid="uid://cgdi475j7v23c" path="res://Scenes/Components/active_task_view.tscn" id="2_8qwoi"]
 [ext_resource type="PackedScene" uid="uid://cvw0scffae3a4" path="res://Scenes/Components/control_view.tscn" id="2_jw3l7"]
+[ext_resource type="Script" uid="uid://c5u0eokic1b2b" path="res://Scripts/Runtime/Views/LevelProgressView.gd" id="3_ryl43"]
 
 [node name="StartMenu" type="Control" node_paths=PackedStringArray("active_task_view", "control_view")]
 layout_mode = 3
@@ -15,7 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ie1ca")
 active_task_view = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/ActiveTaskView")
-control_view = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/ControlView")
+control_view = NodePath("HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ControlView")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -42,10 +43,40 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ControlView" parent="HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_jw3l7")]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ControlView" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_jw3l7")]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="LevelView" type="Control" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("level_progress_bar", "level_label")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+script = ExtResource("3_ryl43")
+level_progress_bar = NodePath("VBoxContainer/ProgressBar")
+level_label = NodePath("VBoxContainer/Label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelView"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelView/VBoxContainer"]
+layout_mode = 2
+text = "Level: XX"
+horizontal_alignment = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelView/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
 
 [node name="ActiveTaskView" parent="HBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_8qwoi")]
 custom_minimum_size = Vector2(288, 256)
