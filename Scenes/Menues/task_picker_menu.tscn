@@ -10,12 +10,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = -1024.0
-offset_bottom = -604.0
+offset_right = -1440.0
+offset_bottom = -810.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 script = ExtResource("1_j2u4a")
 option_1_button = NodePath("NinePatchRect/VBoxContainer/HBoxContainer/Button")
 option_2_button = NodePath("NinePatchRect/VBoxContainer/HBoxContainer/Button2")
@@ -58,14 +57,14 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Button" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme = ExtResource("4_se473")
 
 [node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4

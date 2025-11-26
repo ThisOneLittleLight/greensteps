@@ -5,6 +5,8 @@ class_name StartMenu
 @export var active_task_view : ActiveTaskView
 @export var control_view : ControlView
 
+@export var level_progress_bar : ProgressBar
+
 
 func open():
 	control_view.add_task_button_pressed.connect(_on_add_activity_button_pressed)
