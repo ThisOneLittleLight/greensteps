@@ -33,5 +33,3 @@ theme = SubResource("Theme_bo1nx")
 color = Color(0.13725491, 0.13725491, 0.13725491, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)

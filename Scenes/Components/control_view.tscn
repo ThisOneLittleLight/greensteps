@@ -1,66 +1,83 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvw0scffae3a4"]
+[gd_scene load_steps=3 format=3 uid="uid://dxgbcbic6rsub"]
 
-[ext_resource type="Texture2D" uid="uid://ct4jsb7gx6ag8" path="res://Sprites/PanelNineSlice.png" id="1_ecjsf"]
 [ext_resource type="Script" uid="uid://c3s4ec1epigoa" path="res://Scripts/Runtime/Views/ControlView.gd" id="1_trk4u"]
-[ext_resource type="Theme" uid="uid://bvpcsvt5d56ug" path="res://UiRes/pressable_button.tres" id="3_8aqji"]
+[ext_resource type="Script" uid="uid://c5u0eokic1b2b" path="res://Scripts/Runtime/Views/LevelProgressView.gd" id="2_gpi8j"]
 
-[node name="ControlView" type="Control" node_paths=PackedStringArray("add_task_button", "settings_button", "quit_button")]
-custom_minimum_size = Vector2(160, 256)
+[node name="control_view" type="Control" node_paths=PackedStringArray("add_task_button", "settings_button", "quit_button")]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchor_right = 0.26000002
 anchor_bottom = 1.0
-offset_right = -1760.0
-offset_bottom = -824.0
-grow_horizontal = 2
+offset_right = -299.52002
 grow_vertical = 2
 script = ExtResource("1_trk4u")
-add_task_button = NodePath("NinePatchRect/VBoxContainer/Button")
-settings_button = NodePath("NinePatchRect/VBoxContainer/Button2")
-quit_button = NodePath("NinePatchRect/VBoxContainer/Button3")
+add_task_button = NodePath("Panel/VBoxContainer2/VBoxContainer/Button")
+settings_button = NodePath("Panel/VBoxContainer2/VBoxContainer/Button2")
+quit_button = NodePath("Panel/VBoxContainer2/VBoxContainer/Button3")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ecjsf")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
-alignment = 1
 
-[node name="Button" type="Button" parent="NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Control2" type="Control" parent="Panel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer2" node_paths=PackedStringArray("level_progress_bar", "level_label")]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 8
+script = ExtResource("2_gpi8j")
+level_progress_bar = NodePath("VBoxContainer/LevelProgress")
+level_label = NodePath("VBoxContainer/LevelLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelLabel" type="Label" parent="Panel/VBoxContainer2/Control/VBoxContainer"]
+layout_mode = 2
+text = "Level: XX"
+horizontal_alignment = 1
+
+[node name="LevelProgress" type="ProgressBar" parent="Panel/VBoxContainer2/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 8
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("3_8aqji")
 text = "Pick Task"
 
-[node name="Button2" type="Button" parent="NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Button2" type="Button" parent="Panel/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme = ExtResource("3_8aqji")
 text = "Settings"
 
-[node name="Button3" type="Button" parent="NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
+[node name="Button3" type="Button" parent="Panel/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
-theme = ExtResource("3_8aqji")
-text = "Quit"
+size_flags_vertical = 8
+text = "Exit"

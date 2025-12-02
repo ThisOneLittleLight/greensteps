@@ -2,30 +2,23 @@ extends Menu
 class_name TaskPickerMenu
 
 
-@export var option_1_button : Button
-@export var option_2_button : Button
+@export var task_buttons : Array[TaskButton]
 
 var tasks : Array[Task]
 
 
 func _ready() -> void:
-	option_1_button.pressed.connect(_on_option_1_button_pressed)
-	option_2_button.pressed.connect(_on_option_2_button_pressed)
-
-
-func _on_option_1_button_pressed() -> void:
-	TaskManager.active_task = tasks[0]
-
-	Main.instance.open_menu(Main.Menues.START)
-
-
-func _on_option_2_button_pressed() -> void:
-	TaskManager.active_task = tasks[1]
-	Main.instance.open_menu(Main.Menues.START)
+	for button in task_buttons:
+		button.task_picked.connect(_on_task_picked)
 
 
 func open():
-	tasks = TaskManager.get_random_tasks(2)
+	tasks = TaskManager.get_random_tasks(task_buttons.size())
 
-	option_1_button.text = tasks[0].task_name
-	option_2_button.text = tasks[1].task_name
+	for i in range(tasks.size()):
+		task_buttons[i].set_values(tasks[i])
+
+
+func _on_task_picked(task : Task):
+	TaskManager.active_task = task
+	Main.instance.open_menu(Main.Menues.START)
