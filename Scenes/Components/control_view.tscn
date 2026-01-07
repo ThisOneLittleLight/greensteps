@@ -35,7 +35,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Panel/VBoxContainer2" node_paths=PackedStringArray("level_progress_bar", "level_label")]
+[node name="LevelProgressView" type="Control" parent="Panel/VBoxContainer2" node_paths=PackedStringArray("level_progress_bar", "level_label")]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 size_flags_vertical = 8
@@ -43,7 +43,7 @@ script = ExtResource("2_gpi8j")
 level_progress_bar = NodePath("VBoxContainer/LevelProgress")
 level_label = NodePath("VBoxContainer/LevelLabel")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/LevelProgressView"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,12 +51,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LevelLabel" type="Label" parent="Panel/VBoxContainer2/Control/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="Panel/VBoxContainer2/LevelProgressView/VBoxContainer"]
 layout_mode = 2
 text = "Level: XX"
 horizontal_alignment = 1
 
-[node name="LevelProgress" type="ProgressBar" parent="Panel/VBoxContainer2/Control/VBoxContainer"]
+[node name="LevelProgress" type="ProgressBar" parent="Panel/VBoxContainer2/LevelProgressView/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
@@ -72,6 +72,11 @@ size_flags_vertical = 0
 text = "Pick Task"
 
 [node name="Button2" type="Button" parent="Panel/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+text = "View Profile"
+
+[node name="Button4" type="Button" parent="Panel/VBoxContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Settings"

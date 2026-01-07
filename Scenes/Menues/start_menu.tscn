@@ -22,10 +22,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
 [node name="control_view" parent="HBoxContainer" instance=ExtResource("2_jw3l7")]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="ActiveTaskView" parent="HBoxContainer" instance=ExtResource("2_8qwoi")]
 layout_mode = 2

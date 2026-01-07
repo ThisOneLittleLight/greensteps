@@ -16,6 +16,7 @@ func _ready() -> void:
     level_manager.exp_increased.connect(_on_exp_increased)
     level_manager.lvl_increased.connect(_on_lvl_increased)
 
+    update_level_progress_bar()
     update_level_label()
 
 

@@ -5,7 +5,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_yqr6c"]
 font_size = 32
 
-[node name="ActiveTaskView" type="Control" node_paths=PackedStringArray("task_name_label", "task_desc_label", "task_complete_check")]
+[node name="ActiveTaskView" type="Control" node_paths=PackedStringArray("task_name_label", "task_desc_label", "complete_task_button")]
 custom_minimum_size = Vector2(450, 400)
 layout_mode = 3
 anchors_preset = 15
@@ -16,7 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_yqr6c")
 task_name_label = NodePath("Panel/VBoxContainer/TaskName")
 task_desc_label = NodePath("Panel/VBoxContainer/TaskDesc")
-task_complete_check = NodePath("Panel/VBoxContainer/CheckBox")
+complete_task_button = NodePath("Panel/VBoxContainer/CompleteTaskButton")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -51,7 +51,7 @@ layout_mode = 2
 text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
 autowrap_mode = 2
 
-[node name="CheckBox" type="CheckBox" parent="Panel/VBoxContainer"]
+[node name="CompleteTaskButton" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-text = "Completed"
+text = "Complete Task"
