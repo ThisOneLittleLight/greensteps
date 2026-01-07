@@ -26,7 +26,8 @@ func show_active_task():
 
 func close():
 	visible = false
-	complete_task_button.pressed.disconnect(_on_complete_task_button_pressed)
+	if complete_task_button.pressed.is_connected(_on_complete_task_button_pressed):
+		complete_task_button.pressed.disconnect(_on_complete_task_button_pressed)
 
 
 func _on_complete_task_button_pressed():

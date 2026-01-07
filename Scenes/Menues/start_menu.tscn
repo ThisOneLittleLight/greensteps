@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cshohs0kpy2en"]
+[gd_scene load_steps=6 format=3 uid="uid://cshohs0kpy2en"]
 
 [ext_resource type="Script" uid="uid://dkplkxxeap4ar" path="res://Scripts/Runtime/Menu/StartMenu.gd" id="1_ie1ca"]
 [ext_resource type="PackedScene" uid="uid://cgdi475j7v23c" path="res://Scenes/Components/active_task_view.tscn" id="2_8qwoi"]
 [ext_resource type="PackedScene" uid="uid://dxgbcbic6rsub" path="res://Scenes/Components/control_view.tscn" id="2_jw3l7"]
+[ext_resource type="PackedScene" uid="uid://7v48a5go73r8" path="res://Scenes/Components/profile_view.tscn" id="4_ryl43"]
+[ext_resource type="Script" uid="uid://dvl0vayrnuawe" path="res://Scripts/Runtime/Views/ProfileView.gd" id="5_othls"]
 
-[node name="StartMenu" type="Control" node_paths=PackedStringArray("active_task_view", "control_view")]
+[node name="StartMenu" type="Control" node_paths=PackedStringArray("active_task_view", "control_view", "profile_view")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +16,7 @@ grow_vertical = 2
 script = ExtResource("1_ie1ca")
 active_task_view = NodePath("HBoxContainer/ActiveTaskView")
 control_view = NodePath("HBoxContainer/control_view")
+profile_view = NodePath("HBoxContainer/Profile_view")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -28,5 +31,12 @@ layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="ActiveTaskView" parent="HBoxContainer" instance=ExtResource("2_8qwoi")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
+
+[node name="Profile_view" parent="HBoxContainer" instance=ExtResource("4_ryl43")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 10
+script = ExtResource("5_othls")

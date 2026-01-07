@@ -4,12 +4,14 @@ class_name StartMenu
 
 @export var active_task_view : ActiveTaskView
 @export var control_view : ControlView
+@export var profile_view : ProfileView
 
 @export var level_progress_bar : ProgressBar
 
 
 func open():
 	control_view.add_task_button_pressed.connect(_on_add_activity_button_pressed)
+	control_view.view_profile_button_pressed.connect(_on_view_profile_button_pressed)
 	active_task_view.task_completed.connect(_on_task_completed)
 
 	active_task_view.show_active_task()
@@ -25,3 +27,12 @@ func _on_add_activity_button_pressed():
 
 func _on_task_completed():
 	active_task_view.close()
+
+
+func _on_view_profile_button_pressed():
+	if control_view.view_profile_button.button_pressed:
+		active_task_view.close()
+		profile_view.open()
+	else:
+		profile_view.close()
+		active_task_view.show_active_task()

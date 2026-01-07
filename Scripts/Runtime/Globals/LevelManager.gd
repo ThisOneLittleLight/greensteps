@@ -3,8 +3,8 @@ extends Node
 signal exp_increased(new_exp)
 signal lvl_increased(new_lvl)
 
-# Experience needed for a Level
 const SAVE_FILE_PATH : String = "user://leveldata.save"
+# Experience needed for a Level
 const BASE_LEVEL_EXP : float = 100.0
 const PER_LEVEL_MULTIPLIER : float = 1.2
 
