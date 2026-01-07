@@ -33,3 +33,4 @@ func close():
 func _on_complete_task_button_pressed():
 	task_completed.emit()
 	LevelManager.add_experience(TaskManager.active_task.experience_value)
+	TaskManager.complete_active_task()

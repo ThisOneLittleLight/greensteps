@@ -26,4 +26,4 @@ func set_values(n_task : Task):
 
 	task_name_label.text = task.task_name
 	task_desc_label.text = task.description
-	task_value_label.text = TASK_VALUE_TEXT + "0"
+	task_value_label.text = TASK_VALUE_TEXT + str(task.experience_value)

@@ -2,11 +2,14 @@ extends Node
 
 
 var tasks : Array[Task]
+var completed_tasks : Array
 
 var active_task : Task
 
 
+
 func _ready() -> void:
+	load_completed_tasks()
 	setup_tasks()
 
 
@@ -76,3 +79,38 @@ func save_active_task_to_disk():
 	var json_string = JSON.stringify(save_dict)
 
 	safe_file.store_line(json_string)
+
+
+func save_completed_tasks():
+	var safe_file = FileAccess.open("user://completedTasks.save", FileAccess.WRITE)
+
+	var save_dict : Dictionary = {
+		"completed" : completed_tasks,
+	}
+
+	var json_string = JSON.stringify(save_dict)
+
+	safe_file.store_line(json_string)
+
+
+func load_completed_tasks():
+	if FileAccess.file_exists("user://completedTasks.save"):
+		# Load active task from memory
+		var task_file = FileAccess.open("user://completedTasks.save", FileAccess.READ)
+		var json_string = task_file.get_line()
+		var json : JSON = JSON.new()
+		json.parse(json_string)
+		var task_data = json.data
+
+		active_task = Task.new()
+		completed_tasks = task_data["completed"]
+
+		print(completed_tasks)
+
+
+func complete_active_task():
+	completed_tasks.append(active_task.task_name)
+
+	active_task = null
+
+	save_completed_tasks()
