@@ -38,12 +38,14 @@ offset_right = -8.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 
 [node name="TaskName" type="Label" parent="Panel/VBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 48)
 layout_mode = 2
 text = "Task Name"
 label_settings = SubResource("LabelSettings_yqr6c")
+autowrap_mode = 2
 
 [node name="TaskDesc" type="Label" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(300, 0)

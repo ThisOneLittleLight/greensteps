@@ -33,20 +33,43 @@ func setup_tasks():
 	task.setup_task("Go for a Ride on your Bike", 
 		"Instead of driving, choose to ride your bike for transportation today.", 
 		false)
+	task.experience_value = 30
 	tasks.append(task)
 
 	task = Task.new()
 	task.setup_task("Eat a vegetarian meal", 
 		"Choose a healthy, vegetarian meal option today.", 
 		false)
+	task.experience_value = 20
 	tasks.append(task) 
 
 	task = Task.new()
-	task.setup_task("Recount the Lorem Ipsum",
-		"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+	task.setup_task("Take the stairs instead of the elevator", 
+		"Choose to use the stairs today instead of the elevator", 
 		false)
+	task.experience_value = 15
+	tasks.append(task)
+	
+	task = Task.new()
+	task.setup_task("Bring a reusable water bottle", 
+		"Avoid single-use plastic bottles by carrying your own reusable water bottle today", 
+		false)
+	task.experience_value = 20
 	tasks.append(task)
 
+	task = Task.new()
+	task.setup_task("Use only reusable bags today", 
+		"Avoid plastic bags by bringing a reusable shopping bag for groceries or other items", 
+		false)
+	task.experience_value = 30
+	tasks.append(task)
+
+	task = Task.new()
+	task.setup_task("Unplug devices before leaving the house today", 
+		"Save electicity by unplugging chargers and electronics when they are not being used", 
+		false)
+	task.experience_value = 25
+	tasks.append(task)
 
 
 func get_random_tasks(size : int) -> Array[Task]:

@@ -43,10 +43,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TaskName" type="Label" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 text = "Task Name"
 label_settings = SubResource("LabelSettings_5sal6")
-horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Description" type="Label" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)

@@ -51,6 +51,8 @@ func increase_level(leftover_exp : float):
 	lvl_increased.emit(current_level)
 	exp_increased.emit(current_experience)
 
+	show_level_popup()
+
 
 func save_values():
 	var safe_file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
