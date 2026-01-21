@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsjx33mjqg0g4"]
+
+[ext_resource type="Script" uid="uid://cb6pbljtt5ygn" path="res://Scripts/Runtime/Views/LevelPopupView.gd" id="1_t38yg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2puvq"]
+font_size = 32
+
+[node name="LevelUpPopup" type="Control" node_paths=PackedStringArray("button", "label")]
+z_index = 1
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t38yg")
+button = NodePath("CenterContainer/Panel/VBoxContainer/Button")
+label = NodePath("CenterContainer/Panel/VBoxContainer/Label2")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "LEVEL UP"
+label_settings = SubResource("LabelSettings_2puvq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Nice job, your level just went up!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "X -> X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "OK"

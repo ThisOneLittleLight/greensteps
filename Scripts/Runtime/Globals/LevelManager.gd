@@ -8,6 +8,8 @@ const SAVE_FILE_PATH : String = "user://leveldata.save"
 const BASE_LEVEL_EXP : float = 100.0
 const PER_LEVEL_MULTIPLIER : float = 1.2
 
+const POPUP_SCENE : PackedScene = preload("res://Scenes/level_up_popup.tscn")
+
 
 var current_level : int = 1
 var current_experience : float = 0
@@ -19,6 +21,11 @@ func _ready() -> void:
 	experience_for_next_level = BASE_LEVEL_EXP
 
 	load_values()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		show_level_popup()
 
 
 func add_experience(amount : float):
@@ -80,3 +87,8 @@ func delete_values():
 
 	exp_increased.emit(0)
 	lvl_increased.emit(0)
+
+
+func show_level_popup():
+	var instance = POPUP_SCENE.instantiate()
+	Main.instance.canvas_layer.add_child(instance)
