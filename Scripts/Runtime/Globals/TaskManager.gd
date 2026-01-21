@@ -66,7 +66,10 @@ func get_random_tasks(size : int) -> Array[Task]:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		save_active_task_to_disk()
+		#save_active_task_to_disk()
+		var date_string : String = "%s.%s"
+		var date_dict : Dictionary = Time.get_date_dict_from_system()
+		print(date_string % [str(date_dict.day), str(date_dict.month)])
 
 
 func save_active_task_to_disk():
@@ -115,6 +118,7 @@ func complete_active_task():
 	completed_tasks.append(active_task.task_name)
 	print(active_task.task_name)
 
+	save_progress_file(active_task)
 	active_task = null
 	delete_saved_task()
 
@@ -129,3 +133,23 @@ func delete_completed_task():
 	DirAccess.remove_absolute("user://completedTasks.save")
 
 	completed_tasks.clear()
+
+
+func save_progress_file(task : Task):
+	var safe_file = FileAccess.open("user://progress.save", FileAccess.WRITE)
+
+	# Format [Name, Points, Date]
+	var output : Array = []
+	output.append(task.task_name)
+	output.append(task.experience_value)
+	var date_string : String = "%s.%s"
+	var date_dict : Dictionary = Time.get_date_dict_from_system()
+	output.append(date_string % [str(date_dict.day), str(date_dict.month)])
+
+	var save_dict : Dictionary = {
+		"completed" : output,
+	}
+
+	var json_string = JSON.stringify(save_dict)
+
+	safe_file.store_line(json_string)
