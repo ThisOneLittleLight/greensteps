@@ -26,6 +26,8 @@ func setup_tasks():
 		active_task.task_name = task_data["taskName"]
 		active_task.description = task_data["taskDesc"]
 		active_task.is_completed = task_data["taskComplete"]
+	else:
+		active_task = null
 
 	var task : Task = Task.new()
 	task.setup_task("Go for a Ride on your Bike", 
@@ -82,6 +84,7 @@ func save_active_task_to_disk():
 
 
 func save_completed_tasks():
+	print("Completed Tasks:", completed_tasks)
 	var safe_file = FileAccess.open("user://completedTasks.save", FileAccess.WRITE)
 
 	var save_dict : Dictionary = {
@@ -110,7 +113,19 @@ func load_completed_tasks():
 
 func complete_active_task():
 	completed_tasks.append(active_task.task_name)
+	print(active_task.task_name)
 
 	active_task = null
+	delete_saved_task()
 
 	save_completed_tasks()
+
+
+func delete_saved_task():
+	DirAccess.remove_absolute("user://tasks.save")
+
+
+func delete_completed_task():
+	DirAccess.remove_absolute("user://completedTasks.save")
+
+	completed_tasks.clear()

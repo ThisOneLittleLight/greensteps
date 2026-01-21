@@ -70,3 +70,13 @@ func load_values():
 		current_level = level_data["current_level"]
 		current_experience = level_data["current_experience"]
 		experience_for_next_level = level_data["experience_for_next_level"]
+
+
+func delete_values():
+	DirAccess.remove_absolute(SAVE_FILE_PATH)
+	current_level = 0
+	current_experience = 0
+	experience_for_next_level = BASE_LEVEL_EXP
+
+	exp_increased.emit(0)
+	lvl_increased.emit(0)

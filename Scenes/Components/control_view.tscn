@@ -79,6 +79,7 @@ toggle_mode = true
 text = "View Profile"
 
 [node name="Button4" type="Button" parent="Panel/VBoxContainer2/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 text = "Settings"

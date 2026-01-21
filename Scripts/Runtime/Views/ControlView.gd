@@ -19,3 +19,4 @@ func _ready() -> void:
 	view_profile_button.pressed.connect(func(): view_profile_button_pressed.emit())
 	settings_button.pressed.connect(func(): settings_button_pressed.emit())
 	quit_button.pressed.connect(func(): quit_button_pressed.emit())
+	quit_button.pressed.connect(func(): get_tree().quit())

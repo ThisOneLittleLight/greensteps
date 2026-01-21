@@ -22,3 +22,4 @@ func open():
 func _on_task_picked(task : Task):
 	TaskManager.active_task = task
 	Main.instance.open_menu(Main.Menues.START)
+	TaskManager.save_active_task_to_disk()
